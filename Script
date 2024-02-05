@@ -1,0 +1,28 @@
+from selenium import webdriver
+
+# Replace 'your_website_url' with the actual URL of the website you are testing
+url = 'your_website_url'
+
+# Initialize the WebDriver (choose the appropriate driver for your browser)
+driver = webdriver.Chrome()
+
+# Open the website
+driver.get(url)
+
+# List of expected values
+expected_values = [value1, value2, value3]  # Replace with your actual expected values
+
+# Get the actual values from the webpage
+actual_values = []
+# Use Selenium to locate elements and extract actual values, assuming XPath for illustration
+actual_values.append(driver.find_element_by_xpath('xpath_for_value1').text)
+actual_values.append(driver.find_element_by_xpath('xpath_for_value2').text)
+actual_values.append(driver.find_element_by_xpath('xpath_for_value3').text)
+
+# Compare expected and actual values
+for expected, actual in zip(expected_values, actual_values):
+    if expected != actual:
+        raise Exception(f"Value mismatch! Expected: {expected}, Actual: {actual}")
+
+# Close the browser
+driver.quit()
